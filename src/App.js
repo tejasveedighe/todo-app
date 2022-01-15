@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 
 const Completed = ({ completedList }) => {
   if (completedList.length < 1) {
@@ -20,15 +21,14 @@ const Completed = ({ completedList }) => {
 const Input = ({ newTodo, addTodo, handleTodoChange }) => {
   return (
     <form onSubmit={addTodo}>
-      <input value={newTodo} onChange={handleTodoChange}></input>
-      <button type="submit">add</button>
+      <input className="todo-input" value={newTodo} onChange={handleTodoChange}></input>
     </form>
   );
 };
 
 const TodoList = ({ todoList, handleTaskComplete }) => {
   if (todoList.length < 1) {
-    return <><br></br>No Task</>;
+    return <></>;
   }
 
   return (
@@ -63,16 +63,16 @@ const App = () => {
   const addTodo = (event) => {
     event.preventDefault();
 
-    if(!newTodo.length) {
+    if (!newTodo.length) {
       alert("Cannot add empty task");
+    } else {
+      const newTask = {
+        task: newTodo,
+        isComplete: false,
+      };
+
+      settodoList(todoList.concat(newTask));
     }
-
-    const newTask = {
-      task: newTodo,
-      isComplete: false,
-    };
-
-    settodoList(todoList.concat(newTask));
     setNewTodo("");
   };
 
@@ -82,14 +82,16 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="App">
       <h1> Todo List </h1>
+      {todoList.length} tasks
       <Input
         newTodo={newTodo}
         handleTodoChange={handleTodoChange}
         addTodo={addTodo}
       />
       <TodoList todoList={todoList} handleTaskComplete={handleTaskComplete} />
+      <br />
       <h1>Completed Task</h1>
       <Completed completedList={completedList} />
     </div>
