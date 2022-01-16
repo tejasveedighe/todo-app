@@ -20,7 +20,7 @@ const Completed = ({ completedList }) => {
 
 const Input = ({ newTodo, addTodo, handleTodoChange }) => {
   return (
-    <form onSubmit={addTodo}>
+    <form className="todo-form" onSubmit={addTodo}>
       <input className="todo-input" value={newTodo} onChange={handleTodoChange} placeholder="What needs to be done?"></input>
     </form>
   );
@@ -35,9 +35,9 @@ const TodoList = ({ todoList, handleTaskComplete }) => {
     <ul>
       {todoList.map((todo) => (
         <div key={todoList.indexOf(todo)}>
-          <li>
+          <li className="todo-list">
             {todo.task}{" "}
-            <button
+            <button className="complete-btn"
               onClick={() => {
                 handleTaskComplete(todo);
               }}
@@ -91,7 +91,7 @@ const App = () => {
       />
       <TodoList todoList={todoList} handleTaskComplete={handleTaskComplete} />
       <br />
-      <h1>Completed Task</h1>
+      <h4>Completed tasks - {completedList.length} </h4> 
       <Completed completedList={completedList} />
     </div>
   );
