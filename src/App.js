@@ -21,7 +21,7 @@ const Completed = ({ completedList }) => {
 const Input = ({ newTodo, addTodo, handleTodoChange }) => {
   return (
     <form onSubmit={addTodo}>
-      <input className="todo-input" value={newTodo} onChange={handleTodoChange}></input>
+      <input className="todo-input" value={newTodo} onChange={handleTodoChange} placeholder="What needs to be done?"></input>
     </form>
   );
 };
@@ -42,7 +42,7 @@ const TodoList = ({ todoList, handleTaskComplete }) => {
                 handleTaskComplete(todo);
               }}
             >
-              complete
+              &#128465;
             </button>
           </li>
         </div>
@@ -83,7 +83,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1> What needs to be done? </h1>
       {todoList.length} tasks
       <Input
         newTodo={newTodo}
