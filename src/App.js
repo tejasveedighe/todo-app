@@ -11,7 +11,11 @@ const Completed = ({ completedList }) => {
       {completedList.map((query) => (
         <div key={query.task}>
           {" "}
-          <li style={{textDecoration: query.isComplete ? "line-through" : ""}}>{query.task}</li>
+          <li
+            style={{ textDecoration: query.isComplete ? "line-through" : "" }}
+          >
+            {query.task}
+          </li>
         </div>
       ))}
     </ul>
@@ -21,8 +25,29 @@ const Completed = ({ completedList }) => {
 const Input = ({ newTodo, addTodo, handleTodoChange }) => {
   return (
     <form className="todo-form" onSubmit={addTodo}>
-      <input className="todo-input" value={newTodo} onChange={handleTodoChange} placeholder="What needs to be done?"></input>
+      <input
+        className="todo-input"
+        value={newTodo}
+        onChange={handleTodoChange}
+        placeholder="What needs to be done?"
+      ></input>
     </form>
+  );
+};
+
+const TodoList2 = ({ todoList, handleTaskComplete }) => {
+  if (todoList.length < 1) {
+    return <></>;
+  }
+
+  return (
+    <div className="todo">
+      <ul>
+        {todoList.map((todo) => {
+         <li> {todo.task}{" "} </li>
+      })}
+      </ul>
+    </div>
   );
 };
 
@@ -37,7 +62,8 @@ const TodoList = ({ todoList, handleTaskComplete }) => {
         <div key={todoList.indexOf(todo)}>
           <li className="todo-list">
             {todo.task}{" "}
-            <button className="complete-btn" variant="outline-success"
+            <button
+              className="complete-btn"
               onClick={() => {
                 handleTaskComplete(todo);
               }}
@@ -93,7 +119,7 @@ const App = () => {
       />
       <TodoList todoList={todoList} handleTaskComplete={handleTaskComplete} />
       <br />
-      <h4>Completed tasks - {completedList.length} </h4> 
+      <h4>Completed tasks - {completedList.length} </h4>
       <Completed completedList={completedList} />
     </div>
   );
