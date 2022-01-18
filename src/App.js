@@ -83,6 +83,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <h2 id="heading">TODO</h2>
       {todoList.length} tasks
       <Input
         newTodo={newTodo}

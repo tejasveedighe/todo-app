@@ -3,6 +3,7 @@
   margin: 100px auto;
   padding: 32px;
   border: 2px solid black;
+  max-height: 100%;
   border-radius: 5px;
 }
 
@@ -14,12 +15,15 @@
   width: 100%;
 }
 
-ul {
-  border-style: solid;
-  border-color: grey;
-  border-width: 1px;
-}
-
 .complete-btn {
   margin: auto auto auto 90%;
+}
+
+#heading {
+  margin: auto 50%;
+  color: purple;
+}
+
+li {
+  margin: auto;
 }
