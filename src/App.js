@@ -37,7 +37,7 @@ const TodoList = ({ todoList, handleTaskComplete }) => {
         <div key={todoList.indexOf(todo)}>
           <li className="todo-list">
             {todo.task}{" "}
-            <button className="complete-btn"
+            <button className="complete-btn" variant="outline-success"
               onClick={() => {
                 handleTaskComplete(todo);
               }}
