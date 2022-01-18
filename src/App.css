@@ -16,7 +16,9 @@
 }
 
 .complete-btn {
-  margin: auto auto auto 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto ;
 }
 
 #heading {
