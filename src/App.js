@@ -11,7 +11,7 @@ const Completed = ({ completedList }) => {
       {completedList.map((query) => (
         <div key={query.task}>
           {" "}
-          <li>{query.task}</li>
+          <li style={{textDecoration: query.isComplete ? "line-through" : ""}}>{query.task}</li>
         </div>
       ))}
     </ul>
@@ -77,6 +77,7 @@ const App = () => {
   };
 
   const handleTaskComplete = (todo) => {
+    todo.isComplete = true;
     settodoList(todoList.filter((query) => query !== todo));
     setCompleteList(completedList.concat(todo));
   };
